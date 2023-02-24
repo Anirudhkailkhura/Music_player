@@ -5,7 +5,6 @@ import 'screens/home_screen.dart';
 import 'screens/playlist_screen.dart';
 import 'screens/song_screen.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
