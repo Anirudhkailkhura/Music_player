@@ -31,25 +31,39 @@ class HomeScreen extends StatelessWidget {
             children: [
               const _DiscoverMusic(),
               _TrendingMusic(songs: songs),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    const SectionHeader(title: 'Playlist'),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        padding: const EdgeInsets.only(top: 20),
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: Playlists.length,
-                        itemBuilder: ((context, index) {
-                          return PlaylistCard(playlist: Playlists[index]);
-                        }))
-                  ],
-                ),
-              )
+              _PlaylistMusic(Playlists: Playlists)
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _PlaylistMusic extends StatelessWidget {
+  const _PlaylistMusic({
+    super.key,
+    required this.Playlists,
+  });
+
+  final List<Playlist> Playlists;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          const SectionHeader(title: 'Playlist'),
+          ListView.builder(
+              shrinkWrap: true,
+              padding: const EdgeInsets.only(top: 20),
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: Playlists.length,
+              itemBuilder: ((context, index) {
+                return PlaylistCard(playlist: Playlists[index]);
+              }))
+        ],
       ),
     );
   }
